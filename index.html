@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>logik.omg — iPhone 14 Pro Max и MacBook Pro 2018</title>
+<meta name="description" content="logik.omg: iPhone 14 Pro Max Deep Purple, MacBook Pro 2018 Space Gray и простое объяснение, что такое ресейл.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9F%A3%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0c14;--bg2:#181222;--ink:#efeaf6;--mute:#a69cb5;--line:rgba(255,255,255,.1);
+  --purple:#594f63;--lilac:#b9a7d1;--gray:#7d7e80;--card:rgba(255,255,255,.05);
+  --ease:cubic-bezier(.22,1,.36,1);
+  --display:"Unbounded","Arial Black",system-ui,sans-serif;
+  --body:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){
+  :root{--bg:#f6f3fa;--bg2:#ebe5f4;--ink:#1a1522;--mute:#645a73;--line:rgba(26,21,34,.12);--card:rgba(26,21,34,.05);--lilac:#6f55a0;color-scheme:light}
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);overflow-x:hidden;padding-top:env(safe-area-inset-top,0)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--lilac);outline-offset:3px;border-radius:6px}
+.bar{position:fixed;inset:0 0 auto;height:3px;z-index:60;background:var(--lilac);transform-origin:left;transform:scaleX(0)}
+nav{position:fixed;top:env(safe-area-inset-top,0);left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px clamp(18px,4vw,48px);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid var(--line)}
+.logo{font:700 18px var(--display);text-decoration:none;letter-spacing:-.02em}
+.logo b{color:var(--lilac);font-weight:700}
+nav div{display:flex;gap:26px;font-size:15px}
+nav div a{text-decoration:none;color:var(--mute);transition:color .4s var(--ease)}
+nav div a:hover{color:var(--ink)}
+@media(max-width:640px){nav div a:not(:last-child){display:none}}
+section{position:relative}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.08}
+h1{font-size:clamp(34px,6.2vw,76px)}
+h2{font-size:clamp(28px,4.6vw,56px)}
+p.lead{color:var(--mute);font-size:clamp(17px,2vw,21px);max-width:34em;margin-top:22px}
+.btn{display:inline-block;margin-top:34px;padding:15px 28px;border-radius:99px;background:var(--lilac);color:#17121f;font-weight:700;text-decoration:none;transition:transform .6s var(--ease),box-shadow .6s var(--ease)}
+.btn:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 18px 40px -12px var(--lilac)}
+[data-r]{opacity:0;transform:translateY(34px);filter:blur(8px);transition:opacity 1.2s var(--ease),transform 1.2s var(--ease),filter 1.2s var(--ease);transition-delay:var(--d,0s)}
+[data-r].in{opacity:1;transform:none;filter:none}
+
+/* hero */
+.hero{min-height:100svh;display:grid;align-items:center;padding:110px 0 70px;background:radial-gradient(60% 50% at 75% 45%,rgba(139,115,180,.35),transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hint{margin-top:14px;font-size:14px;color:var(--mute)}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;text-align:center}.hero p.lead{margin-inline:auto}}
+
+/* phone */
+.stage{perspective:1400px;display:grid;place-items:center}
+.phone{--w:min(270px,64vw);width:var(--w);aspect-ratio:9/19.3;position:relative;transform-style:preserve-3d;cursor:pointer;will-change:transform}
+.face{position:absolute;inset:0;border-radius:calc(var(--w)*.17);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+.front{background:linear-gradient(145deg,#9a8bac,#594f63 45%,#40384b);padding:calc(var(--w)*.032);box-shadow:0 50px 80px -30px rgba(0,0,0,.7),inset 0 0 0 1.5px rgba(255,255,255,.25)}
+.screen{position:relative;width:100%;height:100%;border-radius:calc(var(--w)*.14);overflow:hidden;background:radial-gradient(90% 60% at 30% 20%,#9d7fd6 0,transparent 60%),radial-gradient(80% 60% at 80% 80%,#e08ac0 0,transparent 60%),linear-gradient(160deg,#2c1b4d,#120a24);color:#fff;font-size:calc(var(--w)*.04)}
+.time{position:absolute;top:20%;width:100%;text-align:center;font:700 calc(var(--w)*.26)/1 var(--display);letter-spacing:-.05em}
+.date{position:absolute;top:15%;width:100%;text-align:center;font-size:calc(var(--w)*.05);opacity:.85}
+.isl{position:absolute;top:2.6%;left:50%;width:28%;height:3.7%;transform:translateX(-50%);background:#000;border-radius:99px;transition:width .9s var(--ease),height .9s var(--ease),border-radius .9s var(--ease);display:flex;align-items:center;justify-content:space-between;padding:0 4%;overflow:hidden;white-space:nowrap}
+.isl span{opacity:0;transition:opacity .5s var(--ease) 0s;position:absolute;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center}
+.phone[data-s="1"] .isl{width:64%;height:6.5%}
+.phone[data-s="2"] .isl{width:90%;height:12%;border-radius:calc(var(--w)*.1)}
+.phone[data-s="1"] .s1,.phone[data-s="2"] .s2{opacity:1;transition-delay:.35s}
+.dot{width:1.8em;height:1.8em;border-radius:50%;background:linear-gradient(135deg,#e08ac0,#7f5af0);flex:none}
+.ok{background:#34c759}.no{background:#ff453a}
+.back{transform:rotateY(180deg);background:linear-gradient(150deg,#7b6e8c,#594f63 50%,#483f54);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.2)}
+.cam{position:absolute;top:3.5%;left:5%;width:47%;aspect-ratio:1;border-radius:24%;background:rgba(255,255,255,.1);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.lens{position:absolute;width:41%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#0b0b12 0 30%,#1f1d29 32% 52%,#8e8a99 54% 58%,#2c2937 60%)}
+.lens:nth-child(1){top:6%;left:6%}.lens:nth-child(2){top:6%;right:6%}.lens:nth-child(3){bottom:6%;left:6%}
+.flash{position:absolute;right:7%;bottom:9%;width:11%;aspect-ratio:1;border-radius:50%;background:#e9e3f0}
+.mark{position:absolute;top:47%;left:50%;width:22%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:rgba(255,255,255,.14)}
+
+/* presentations */
+.pres{height:260vh}
+.sticky{position:sticky;top:0;height:100svh;display:grid;align-items:center;overflow:hidden}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+@media(max-width:820px){.split{grid-template-columns:1fr;gap:26px;text-align:center}.split .stage{order:-1}.sticky{align-items:start;padding-top:84px}.phone{--w:min(210px,52vw)}}
+.state{list-style:none;padding:0;margin-top:28px;display:grid;gap:10px}
+.state li{padding:14px 18px;border:1px solid var(--line);border-radius:16px;color:var(--mute);transition:all .8s var(--ease)}
+.state li.on{color:var(--ink);background:var(--card);border-color:var(--lilac);transform:translateX(8px)}
+@media(max-width:820px){.state{text-align:left}}
+.big{background:linear-gradient(180deg,var(--bg),var(--bg2));padding:clamp(80px,12vw,150px) 0}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:54px}
+.num{padding:26px 8px;border-top:1px solid var(--line)}
+.num b{display:block;font:700 clamp(34px,5vw,64px)/1 var(--display);letter-spacing:-.04em;color:var(--lilac)}
+.num span{display:block;margin-top:12px;color:var(--mute);font-size:15px}
+@media(max-width:820px){.nums{grid-template-columns:repeat(2,1fr)}}
+
+/* mac */
+.mac{--w:min(640px,90vw);width:var(--w);margin:auto;perspective:1600px;font-size:calc(var(--w)*.022)}
+.lid{aspect-ratio:16/10.2;background:#232427;border-radius:3% 3% 0 0;padding:2.6% 2.6% 3.4%;transform-origin:50% 100%;box-shadow:inset 0 0 0 2px #6a6b6e,0 40px 80px -40px rgba(0,0,0,.8);will-change:transform}
+.ms{width:100%;height:100%;border-radius:2px;background:radial-gradient(70% 70% at 25% 25%,#8d6fd0,transparent 60%),radial-gradient(70% 70% at 85% 85%,#3a6fd0,transparent 65%),#150d2a;color:#fff;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden}
+.ms strong{font:700 2.6em/1.1 var(--display);letter-spacing:-.04em}
+.ms small{display:block;margin-top:.8em;opacity:.8;font-size:1.1em}
+.tb{position:absolute;bottom:0;left:0;right:0;height:5%;background:#000;opacity:.55}
+.base{position:relative;width:114%;margin-left:-7%;height:calc(var(--w)*.03);background:linear-gradient(#b3b4b7,#7d7e80 70%,#5d5e61);border-radius:0 0 7% 7%/0 0 100% 100%;box-shadow:0 30px 50px -20px rgba(0,0,0,.7)}
+.base::before{content:"";position:absolute;top:0;left:50%;width:18%;height:38%;transform:translateX(-50%);background:#55575b;border-radius:0 0 8px 8px}
+
+/* resale */
+.resale{padding:clamp(80px,12vw,150px) 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px;counter-reset:s}
+.step{padding:28px;border-radius:24px;background:var(--card);border:1px solid var(--line);counter-increment:s}
+.step::before{content:counter(s);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--lilac);color:#17121f;font:700 16px var(--display);margin-bottom:18px}
+.step h3{font-size:20px;margin-bottom:10px}.step p{color:var(--mute);font-size:16px}
+.check{margin-top:60px;display:grid;grid-template-columns:1fr 1fr;gap:34px}
+.check h3{font-size:22px;margin-bottom:14px}
+.check ul{padding-left:20px;color:var(--mute)}.check li{margin:8px 0}
+@media(max-width:820px){.steps,.check{grid-template-columns:1fr}}
+footer{padding:50px 0 60px;border-top:1px solid var(--line);color:var(--mute);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btns .btn{margin-top:34px}
+.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.ghost:hover{box-shadow:inset 0 0 0 1px var(--lilac),0 18px 40px -16px var(--lilac)}
+nav div a:last-child{color:var(--ink);font-weight:700}
+.photo-img{display:block;width:min(340px,70vw);height:auto;filter:drop-shadow(0 40px 50px rgba(0,0,0,.45))}
+.mac-photo{width:min(640px,90vw);margin:auto}
+.contact{padding:clamp(70px,10vw,130px) 0;background:linear-gradient(180deg,var(--bg),var(--bg2))}
+footer a{text-decoration:none;color:var(--ink);font-weight:700}
+@media(max-width:820px){.btns{justify-content:center}}
+.phone{--d:calc(var(--w)*.037)}
+.phone .front{transform:translateZ(var(--d))}
+.phone .back{transform:rotateY(180deg) translateZ(var(--d))}
+.side{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:linear-gradient(90deg,#5f5370,#a597b8 50%,#5f5370)}
+.sd-l,.sd-r{left:50%;top:3%;width:calc(var(--d)*2);height:94%;margin-left:calc(var(--d)*-1)}
+.sd-l{transform:rotateY(-90deg) translateZ(calc(var(--w)*.5 - 1px))}
+.sd-r{transform:rotateY(90deg) translateZ(calc(var(--w)*.5 - 1px))}
+.sd-t,.sd-b{left:8%;width:84%;top:50%;height:calc(var(--d)*2);margin-top:calc(var(--d)*-1);background:linear-gradient(180deg,#5f5370,#a597b8 50%,#5f5370)}
+.sd-t{transform:rotateX(90deg) translateZ(calc(var(--w)*1.07 - 1px))}
+.sd-b{transform:rotateX(-90deg) translateZ(calc(var(--w)*1.07 - 1px))}
+.face.ph{padding:0;background:none;box-shadow:none}
+.face.ph img{display:block;width:100%;height:100%;object-fit:fill;pointer-events:none}
+#heroPhoto{touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.tick{overflow:hidden;border-block:1px solid var(--line);background:var(--bg2);padding:16px 0;white-space:nowrap}
+.trk{display:inline-flex;animation:slide 26s linear infinite}
+.tick:hover .trk{animation-play-state:paused}
+.tick a{display:inline-flex;align-items:center;gap:36px;padding-right:36px;text-decoration:none;font:700 clamp(18px,3vw,28px) var(--display);letter-spacing:-.03em}
+.tick i{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#ff5c8a,#4de2e8)}
+@keyframes slide{to{transform:translateX(-50%)}}
+.calc{padding:clamp(80px,12vw,150px) 0;background:linear-gradient(180deg,var(--bg2),var(--bg))}
+.calcbox{margin-top:44px;padding:clamp(22px,4vw,40px);border-radius:28px;background:var(--card);border:1px solid var(--line)}
+.fields{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.fields label{display:grid;gap:8px;font-size:14px;color:var(--mute)}
+.fields input,.fields select{font:inherit;font-size:18px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:13px 14px;width:100%;transition:border-color .4s var(--ease),box-shadow .4s var(--ease)}
+.fields input:focus,.fields select:focus{outline:none;border-color:var(--lilac);box-shadow:0 0 0 4px rgba(185,167,209,.22)}
+.out{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.out div{padding:22px;border-radius:20px;background:var(--bg)}
+.out span{display:block;color:var(--mute);font-size:14px}
+.out b{display:block;margin-top:8px;font:700 clamp(24px,3.6vw,40px)/1.1 var(--display);letter-spacing:-.03em;color:var(--lilac)}
+.out b.neg{color:#ff6b61}
+.note{margin-top:18px;color:var(--mute);font-size:14px}
+.tt{padding:clamp(80px,12vw,140px) 0;text-align:center}
+.tt .lead{margin-inline:auto}
+.tt .btns{justify-content:center}
+.handle{display:inline-block;margin-top:26px;text-decoration:none;font:700 clamp(26px,6.4vw,92px)/1.1 var(--display);letter-spacing:-.04em;background:linear-gradient(90deg,var(--lilac),#ff5c8a,#4de2e8,var(--lilac));background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:flow 7s linear infinite;transition:transform .7s var(--ease)}
+.handle:hover{transform:scale(1.04)}
+@keyframes flow{to{background-position:250% 0}}
+@media(max-width:820px){.fields{grid-template-columns:1fr 1fr}.out{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.trk,.handle{animation:none}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  [data-r]{transition:none;opacity:1;transform:none;filter:none}
+  .isl,.state li,.btn{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<nav>
+  <a class="logo" href="#top">logik<b>.omg</b></a>
+  <div><a href="#island">iPhone</a><a href="#mac">MacBook</a><a href="#resale">Ресейл</a><a href="#tiktok">TikTok</a><a href="tel:+375339901824">Позвонить</a></div>
+</nav>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1 data-r>Техника Apple, у которой впереди вторая жизнь</h1>
+      <p class="lead" data-r style="--d:.12s">iPhone 14 Pro Max в цвете Deep Purple и MacBook Pro 2018 в Space Gray. Проверенная классика, которую выгодно купить и так же выгодно перепродать.</p>
+      <div class="btns" data-r style="--d:.24s"><a class="btn" href="tel:+375339901824">Позвонить</a><a class="btn ghost" href="#resale">Что такое ресейл</a></div>
+    </div>
+    <div class="stage" data-r style="--d:.2s">
+      <div>
+        <div class="phone" id="heroPhone" role="img" aria-label="iPhone 14 Pro Max Deep Purple, нажмите, чтобы перевернуть" tabindex="0"></div>
+        <p class="hint" style="text-align:center">Тяните, чтобы покрутить в 3D, нажмите, чтобы перевернуть</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tick" aria-label="Наш TikTok @official_logik"><div class="trk"><a href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">@official_logik в TikTok<i></i></a><a href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">@official_logik в TikTok<i></i></a><a href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">@official_logik в TikTok<i></i></a><a href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">@official_logik в TikTok<i></i></a><a href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">@official_logik в TikTok<i></i></a><a href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">@official_logik в TikTok<i></i></a><a href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">@official_logik в TikTok<i></i></a><a href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">@official_logik в TikTok<i></i></a></div></div>
+
+<section class="pres" id="island">
+  <div class="sticky">
+    <div class="wrap split">
+      <div>
+        <h2 data-r>Dynamic Island: остров, который живёт</h2>
+        <p class="lead" data-r style="--d:.1s">Вырез под камеру превратился в интерактивную зону. Он растёт, сжимается и показывает, что происходит прямо сейчас.</p>
+        <ul class="state" id="stateList">
+          <li class="on">Покой: компактная капсула с камерой</li>
+          <li>Музыка: остров раскрывается и держит плеер</li>
+          <li>Звонок: максимальный размер с кнопками</li>
+        </ul>
+      </div>
+      <div class="stage"><div class="phone" id="islandPhone" data-s="0"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="big" id="specs">
+  <div class="wrap">
+    <h2 data-r>iPhone 14 Pro Max в цифрах</h2>
+    <p class="lead" data-r style="--d:.1s">Флагман 2022 года, который и сегодня не выглядит старым. Главное, что стоит знать.</p>
+    <div class="nums">
+      <div class="num" data-r><b data-count="48" data-suffix=" Мп">0</b><span>основная камера с четырёхпиксельной матрицей</span></div>
+      <div class="num" data-r style="--d:.1s"><b data-count="120" data-suffix=" Гц">0</b><span>адаптивная частота экрана ProMotion</span></div>
+      <div class="num" data-r style="--d:.2s"><b>A16</b><span>процессор Bionic с запасом мощности</span></div>
+      <div class="num" data-r style="--d:.3s"><b data-count="6.7" data-dec="1">0</b><span>дюйма: Super Retina XDR с Always-On</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="pres" id="mac" style="height:240vh">
+  <div class="sticky">
+    <div class="wrap split">
+      <div>
+        <h2 data-r>MacBook Pro 2018 в цвете Space Gray</h2>
+        <p class="lead" data-r style="--d:.1s">Тонкий алюминиевый корпус, дисплей Retina, Touch Bar, чип безопасности T2 и порты Thunderbolt 3. Для учёбы, офиса и монтажа он всё ещё актуален.</p>
+        <p class="lead" data-r style="--d:.2s">Перед покупкой уточняйте версию macOS и состояние батареи.</p>
+      </div>
+      <div>
+        <div class="mac" id="mac3d">
+          <div class="lid" id="lid"><div class="ms"><div><strong>MacBook Pro</strong><small>Retina · Touch Bar · Space Gray</small></div><div class="tb"></div></div></div>
+          <div class="base"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="resale" id="resale">
+  <div class="wrap">
+    <h2 data-r>Что такое ресейл</h2>
+    <p class="lead" data-r style="--d:.1s">Ресейл (от английского resale, «перепродажа») значит купить вещь, чтобы продать её снова. С техникой Apple это работает особенно хорошо: iPhone и MacBook дольше других сохраняют цену, а спрос на них есть всегда.</p>
+    <p class="lead" data-r style="--d:.15s">Покупатель получает проверенный девайс дешевле новой модели. Продавец возвращает значительную часть денег. А техника служит ещё несколько лет вместо того, чтобы лежать в ящике.</p>
+    <div class="steps">
+      <div class="step" data-r><h3>Найти и купить</h3><p>Выбрать модель с хорошим спросом и адекватной ценой: например, iPhone 14 Pro Max или MacBook Pro 2018.</p></div>
+      <div class="step" data-r style="--d:.1s"><h3>Проверить и подготовить</h3><p>Протестировать устройство, сбросить данные, отвязать Apple ID, почистить корпус и сделать чёткие фото.</p></div>
+      <div class="step" data-r style="--d:.2s"><h3>Продать</h3><p>Честно описать состояние, назвать рыночную цену и отдать устройство с чеком, коробкой или зарядкой.</p></div>
+    </div>
+    <div class="check">
+      <div data-r><h3>Что проверить в iPhone</h3><ul><li>Состояние аккумулятора в настройках</li><li>«Найти iPhone» выключен, Apple ID отвязан</li><li>Совпадение IMEI в системе и на коробке</li><li>Работа Face ID, камер и динамиков</li></ul></div>
+      <div data-r style="--d:.1s"><h3>Что проверить в MacBook</h3><ul><li>Количество циклов зарядки батареи</li><li>Клавиатура и Touch Bar без залипаний</li><li>Блокировка активации снята</li><li>Экран без пятен и следов нагрузки</li></ul></div>
+    </div>
+  </div>
+</section>
+<section class="calc" id="calc">
+  <div class="wrap">
+    <h2 data-r>Калькулятор ресейла</h2>
+    <p class="lead" data-r style="--d:.1s">Введите свои цифры и посмотрите, сколько останется после перепродажи.</p>
+    <div class="calcbox" data-r style="--d:.15s">
+      <div class="fields">
+        <label>Цена покупки<input id="cBuy" type="number" inputmode="decimal" min="0" value="1800"></label>
+        <label>Расходы: ремонт, доставка<input id="cCost" type="number" inputmode="decimal" min="0" value="100"></label>
+        <label>Цена продажи<input id="cSell" type="number" inputmode="decimal" min="0" value="2300"></label>
+        <label>Валюта<select id="cCur"><option>BYN</option><option>USD</option><option>EUR</option><option>RUB</option></select></label>
+      </div>
+      <div class="out">
+        <div><span>Прибыль</span><b id="oP">0</b></div>
+        <div><span>Маржа от цены продажи</span><b id="oM">0%</b></div>
+        <div><span>ROI: доход на вложенное</span><b id="oR">0%</b></div>
+      </div>
+      <p class="note">Цифры в полях — пример, замените их своими. Комиссии площадок и налоги не учитываются.</p>
+    </div>
+  </div>
+</section>
+
+<section class="tt" id="tiktok">
+  <div class="wrap">
+    <h2 data-r>Мы в TikTok</h2>
+    <a class="handle" href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener" data-r style="--d:.1s">@official_logik</a>
+    <p class="lead" data-r style="--d:.2s">Подписывайтесь и пишите нам в TikTok: это ещё один способ связаться с logik.omg.</p>
+    <div class="btns" data-r style="--d:.3s"><a class="btn" href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">Открыть TikTok</a></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 data-r>Связаться с нами</h2>
+    <p class="lead" data-r style="--d:.1s">Позвоните или напишите в мессенджер: ответим на вопросы по технике и ресейлу.</p>
+    <div class="btns" data-r style="--d:.2s">
+      <a class="btn" href="tel:+375339901824">+375 33 990-18-24</a>
+      <a class="btn ghost" href="https://wa.me/375339901824" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn ghost" href="viber://chat?number=%2B375339901824">Viber</a>
+      <a class="btn ghost" href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">TikTok</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 logik.omg · <a href="tel:+375339901824">+375 33 990-18-24</a> · <a href="https://www.tiktok.com/@official_logik" target="_blank" rel="noopener">@official_logik</a></span><span>Apple, iPhone и MacBook — товарные знаки Apple Inc.</span></div></footer>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)};
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp=function(v,a,b){return Math.min(b,Math.max(a,v))};
+  var ease=function(t){return 1-Math.pow(1-t,3)};
+
+  /* build phones */
+  function phone(el,withBack){
+    el.innerHTML='<div class="face front"><div class="screen"><div class="date">Вторник, 21 октября</div><div class="time">9:41</div>'+
+      '<div class="isl"><span class="s1"><i class="dot"></i><b>Now Playing</b><em style="font-style:normal">♪</em></span>'+
+      '<span class="s2"><b>logik.omg</b><i class="dot no"></i><i class="dot ok"></i></span></div></div></div>'+
+      (withBack?'<i class="side sd-l"></i><i class="side sd-r"></i><i class="side sd-t"></i><i class="side sd-b"></i><div class="face back"><div class="cam"><i class="lens"></i><i class="lens"></i><i class="lens"></i><i class="flash"></i></div><i class="mark"></i></div>':'');
+  }
+  var hero=$('#heroPhone'),isl=$('#islandPhone');
+  phone(hero,true);phone(isl,false);
+
+  /* reveal + count up */
+  function count(el){
+    var to=parseFloat(el.dataset.count),dec=+el.dataset.dec||0,suf=el.dataset.suffix||'',t0=performance.now(),dur=1800;
+    function f(n){var p=clamp((n-t0)/dur,0,1),v=to*ease(p);
+      el.textContent=v.toLocaleString('ru-RU',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;
+      if(p<1)requestAnimationFrame(f)}
+    reduce?(el.textContent=to.toLocaleString('ru-RU',{minimumFractionDigits:dec})+suf):requestAnimationFrame(f);
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(!e.isIntersecting)return;e.target.classList.add('in');
+    var c=e.target.querySelector('[data-count]');if(c)count(c);io.unobserve(e.target)})},{threshold:.2});
+  document.querySelectorAll('[data-r]').forEach(function(el){io.observe(el)});
+
+  /* interaction */
+  var flip=0,flipT=0,mx=0,my=0,tmx=0,tmy=0,macPhoto=null,drag=null;
+  function toggle(){flipT=(Math.round(flipT/180)+1)*180}
+  /* real photos: files in /img replace the drawings automatically */
+  function tryPhoto(src,done){var im=new Image();im.onload=function(){done(im)};im.src=src}
+  function facePhoto(src,sel){tryPhoto(src,function(im){var f=hero.querySelector(sel);if(!f)return;im.alt='';f.innerHTML='';f.classList.add('ph');f.appendChild(im)})}
+  facePhoto('img/iphone-front.png','.front');facePhoto('img/iphone-back.png','.back');
+  /* drag to spin the 3D phone */
+  hero.addEventListener('pointerdown',function(e){drag={x:e.clientX,f:flipT,m:0};try{hero.setPointerCapture(e.pointerId)}catch(_){}});
+  hero.addEventListener('pointermove',function(e){if(!drag)return;var dx=e.clientX-drag.x;drag.m=Math.max(drag.m,Math.abs(dx));flipT=drag.f+dx*.7});
+  hero.addEventListener('pointerup',function(){if(!drag)return;var moved=drag.m>6;drag=null;if(moved)flipT=Math.round(flipT/180)*180;else toggle()});
+  hero.addEventListener('pointercancel',function(){drag=null;flipT=Math.round(flipT/180)*180});
+  /* resale calculator */
+  var cT={p:0,m:0,r:0},cC={p:0,m:0,r:0};
+  function calc(){var b=+$('#cBuy').value||0,c=+$('#cCost').value||0,v=+$('#cSell').value||0,inv=b+c,pr=v-inv;cT={p:pr,m:v>0?pr/v*100:0,r:inv>0?pr/inv*100:0}}
+  ['#cBuy','#cCost','#cSell'].forEach(function(q){$(q).addEventListener('input',calc)});calc();
+  function calcTick(){
+    ['p','m','r'].forEach(function(n){cC[n]+=(cT[n]-cC[n])*(reduce?1:.14)});
+    var cur=$('#cCur').value,f=function(v,d){return v.toLocaleString('ru-RU',{maximumFractionDigits:d,minimumFractionDigits:d})};
+    $('#oP').textContent=f(cC.p,0)+' '+cur;$('#oM').textContent=f(cC.m,1)+'%';$('#oR').textContent=f(cC.r,1)+'%';
+    ['#oP','#oM','#oR'].forEach(function(q){$(q).classList.toggle('neg',cT.p<0)});
+  }
+  tryPhoto('img/macbook-pro-2018-space-gray.png',function(im){
+    im.className='photo-img mac-photo';im.alt='MacBook Pro 2018 Space Gray';
+    var m=$('#mac3d');m.innerHTML='';m.appendChild(im);macPhoto=im});
+  hero.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}});
+  addEventListener('pointermove',function(e){tmx=e.clientX/innerWidth-.5;tmy=e.clientY/innerHeight-.5},{passive:true});
+
+  /* smooth scroll-driven loop */
+  var sp={island:0,mac:0},bar=$('#bar'),lid=$('#lid'),items=document.querySelectorAll('#stateList li');
+  var secIsl=$('#island'),secMac=$('#mac'),curState=-1;
+  function prog(sec){var r=sec.getBoundingClientRect();return clamp(-r.top/(r.height-innerHeight),0,1)}
+  function k(){return reduce?1:.09}
+  function frame(){
+    var y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
+    bar.style.transform='scaleX('+(max>0?y/max:0)+')';
+    flip+=(flipT-flip)*k();mx+=(tmx-mx)*k();my+=(tmy-my)*k();
+    var idle=reduce?0:Math.sin(performance.now()/1400)*3;
+    hero.style.transform='translateY('+(-y*.12+idle*2)+'px) rotateY('+(flip+mx*22-12)+'deg) rotateX('+(-my*14)+'deg)';
+    sp.island+=(prog(secIsl)-sp.island)*k();
+    isl.style.transform='rotateY('+((sp.island-.5)*-30+mx*10)+'deg) rotateX('+(-my*8)+'deg)';
+    var s=sp.island<.34?0:sp.island<.67?1:2;
+    if(s!==curState){curState=s;isl.dataset.s=s;items.forEach(function(li,i){li.classList.toggle('on',i===s)})}
+    sp.mac+=(prog(secMac)-sp.mac)*k();
+    var o=ease(clamp(sp.mac*1.7,0,1));
+    if(macPhoto){macPhoto.style.opacity=.25+.75*o;macPhoto.style.transform='translateY('+(50*(1-o))+'px) scale('+(.86+.14*o)+')'}
+    else{lid.style.transform='rotateX('+(-84+84*o)+'deg)';lid.style.filter='brightness('+(.35+.65*o)+')'}
+    calcTick();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
